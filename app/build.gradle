@@ -127,7 +127,7 @@ spoon {
 
 //noinspection GroovyAssignabilityCheck
 configurations.all {
-    resolutionStrategy.force 'com.android.support:support-annotations:22.2.0'
+    resolutionStrategy.force 'com.android.support:support-annotations:23.1.0'
 }
 
 dependencies {
