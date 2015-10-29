@@ -166,12 +166,12 @@ dependencies {
 // androidTest gets a class named SystemAnimations and animations disabled and enabled within
 // the ApplicationTest setUp and tearDown
 // an AndroidManifest.xml stripped of its application tag is
-//task grantAnimationPermission(type: Exec, dependsOn: 'installDebug') { // or install{productFlavour}{buildType}
-//    commandLine "adb shell pm grant $android.defaultConfig.testApplicationId android.permission.SET_ANIMATION_SCALE".split(' ')
-//}
-//
-//tasks.whenTaskAdded { task ->
-//    if (task.name.startsWith('connectedAndroidTest')) {
-//        task.dependsOn grantAnimationPermission
-//    }
-//}
+task grantAnimationPermission(type: Exec, dependsOn: 'installDebug') { // or install{productFlavour}{buildType}
+    commandLine "adb shell pm grant $android.defaultConfig.testApplicationId android.permission.SET_ANIMATION_SCALE".split(' ')
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name.startsWith('connectedAndroidTest')) {
+        task.dependsOn grantAnimationPermission
+    }
+}
